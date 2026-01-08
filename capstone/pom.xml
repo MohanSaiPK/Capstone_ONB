@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>svm.mac</groupId>
+  <artifactId>capstone</artifactId>
+  <version>capstone</version>
+  <packaging>jar</packaging>
+
+  <name>capstone Maven Webapp</name>
+  <!-- FIXME change it to the project's website -->
+  <url>http://www.example.com</url>
+
+  <properties>
+    <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <sonar.exclusions>pom.xml</sonar.exclusions>
+    <vdspath>/home/mohansaikumar/Desktop/All Supporting Jars</vdspath>
+    <productlibpath>/home/mohansaikumar/Desktop/All Supporting Jars</productlibpath>
+    <commonlibpath>/home/mohansaikumar/Desktop/All Supporting Jars</commonlibpath>
+
+    <Env_Des>/standalone/deployments/MAC.war/WEB-INF/lib</Env_Des>
+  </properties>
+  <pluginRepositories>
+    <pluginRepository>
+      <id>central</id>
+      <name>Central Repository</name>
+      <url>https://repo.maven.apache.org//maven2</url>
+      <layout>default</layout>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+      <releases>
+        <updatePolicy>never</updatePolicy>
+      </releases>
+    </pluginRepository>
+  </pluginRepositories>
+  <repositories>
+    <repository>
+      <id>central</id>
+      <name>Central Repository</name>
+      <url>https://repo.maven.apache.org/maven2</url>
+      <layout>default</layout>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
+
+  <dependencies>
+    <!-- Java EE API -->
+    <dependency>
+      <groupId>javax</groupId>
+      <artifactId>javaee-web-api</artifactId>
+      <version>7.0</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- Apache POI -->
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi</artifactId>
+      <version>3.5</version>
+      <scope>system</scope>
+      <systemPath>${productlibpath}/poi-3.5-FINAL.jar</systemPath>
+    </dependency>
+
+    <!-- JEP / DJEP -->
+    <dependency>
+      <groupId>org.lsmp.djep</groupId>
+      <artifactId>djep-1.0.0</artifactId>
+      <version>1.0</version>
+      <scope>system</scope>
+      <systemPath>${productlibpath}/djep-1.0.0.jar</systemPath>
+    </dependency>
+
+    <dependency>
+      <groupId>org.nfunk.jep</groupId>
+      <artifactId>jep</artifactId>
+      <version>2.4.1</version>
+      <scope>system</scope>
+      <systemPath>${productlibpath}/jep-2.3.0.jar</systemPath>
+    </dependency>
+
+    <!-- PrimeFaces -->
+    <dependency>
+      <groupId>org.primefaces.event</groupId>
+      <artifactId>primefaces</artifactId>
+      <version>6.1.11</version>
+      <scope>system</scope>
+      <systemPath>${productlibpath}/primefaces-6.1.11.jar</systemPath>
+    </dependency>
+
+
+    <dependency>
+      <groupId>org.primefaces.extensions</groupId>
+      <artifactId>primefaces</artifactId>
+      <version>3.1.0</version>
+      <scope>system</scope>
+      <systemPath>${productlibpath}/primefaces-extensions-3.1.0.jar</systemPath>
+    </dependency>
+
+    <!-- Compress API -->
+    <dependency>
+      <groupId>solverminds.compress</groupId>
+      <artifactId>CompressAPI</artifactId>
+      <version>1.0</version>
+      <scope>system</scope>
+      <systemPath>${productlibpath}/CompressAPI.jar</systemPath>
+    </dependency>
+
+    <!-- Server Utils -->
+    <dependency>
+      <groupId>lrp.serverutils.refs</groupId>
+      <artifactId>serverutils</artifactId>
+      <version>1.0</version>
+      <scope>system</scope>
+      <systemPath>${productlibpath}/serverutils.jar</systemPath>
+    </dependency>
+
+    <dependency>
+      <groupId>com.svm.lrp.nfr</groupId>
+      <artifactId>LRPUtils</artifactId>
+      <version>1.0</version>
+      <scope>system</scope>
+      <systemPath>${productlibpath}/LRPUtils.jar</systemPath>
+    </dependency>
+
+    <!-- SM Dialog -->
+    <dependency>
+      <groupId>com.svm.lrp.nfr.smdialog</groupId>
+      <artifactId>smdialog</artifactId>
+      <version>1.0</version>
+      <scope>system</scope>
+      <systemPath>${productlibpath}/smdialog.jar</systemPath>
+    </dependency>
+
+    <dependency>
+      <groupId>cacheutil</groupId>
+      <artifactId>cacheutil</artifactId>
+      <version>1.0</version>
+      <scope>system</scope>
+      <systemPath>${productlibpath}/cacheutil.jar</systemPath>
+    </dependency>
+
+    <dependency>
+      <groupId>com.svm.nfr</groupId>
+      <artifactId>useractivityevent</artifactId>
+      <version>1.0</version>
+      <scope>system</scope>
+      <systemPath>${productlibpath}/useractivityevent.jar</systemPath>
+    </dependency>
+
+    <!-- Custom Scope -->
+    <dependency>
+      <groupId>com.svm.lrp.jsf.context.scope</groupId>
+      <artifactId>customscope</artifactId>
+      <version>1.0</version>
+      <scope>system</scope>
+      <systemPath>${productlibpath}/customscope.jar</systemPath>
+    </dependency>
+    
+
+    <!-- Import Excel -->
+    <dependency>
+      <groupId>com.svm.nfr.excel.lib</groupId>
+      <artifactId>importExcel</artifactId>
+      <version>1.0</version>
+      <scope>system</scope>
+      <systemPath>${productlibpath}/importExcel.jar</systemPath>
+    </dependency>
+
+    <!-- SMC New + Export Excel -->
+    <dependency>
+      <groupId>com.svm.lrp.jsf.component</groupId>
+      <artifactId>smcnew</artifactId>
+      <version>1.0</version>
+      <scope>system</scope>
+      <systemPath>${productlibpath}/smcnew.jar</systemPath>
+    </dependency>
+
+    <!-- JSF Utils -->
+    <dependency>
+      <groupId>com.svm.jsf.utils</groupId>
+      <artifactId>jsfutils</artifactId>
+      <version>1.0</version>
+      <scope>system</scope>
+      <systemPath>${productlibpath}/JSFUtils.jar</systemPath>
+    </dependency>
+
+    <!-- Search Components -->
+    <dependency>
+      <groupId>com.svm.lrp.nfr.search</groupId>
+      <artifactId>searchcomponents</artifactId>
+      <version>1.0</version>
+      <scope>system</scope>
+      <systemPath>${productlibpath}/searchcomponents.jar</systemPath>
+    </dependency>
+
+    <!-- Autocomplete -->
+    <dependency>
+      <groupId>com.svm.lrp.nfr</groupId>
+      <artifactId>autocompleteejb</artifactId>
+      <version>1.0</version>
+      <scope>system</scope>
+      <systemPath>${productlibpath}/autocompleteejb.jar</systemPath>
+    </dependency>
+
+    <!-- Toolbar and File Export -->
+    <dependency>
+      <groupId>toolbarc</groupId>
+      <artifactId>toolbarc</artifactId>
+      <version>1.0</version>
+      <scope>system</scope>
+      <systemPath>${productlibpath}/toolbarc.jar</systemPath>
+    </dependency>
+
+    <dependency>
+      <groupId>modulealias</groupId>
+      <artifactId>modulealias</artifactId>
+      <version>1.0</version>
+      <scope>system</scope>
+      <systemPath>${productlibpath}/modulealias.jar</systemPath>
+    </dependency>
+
+
+    <dependency>
+      <groupId>FileExportBean</groupId>
+      <artifactId>FileExportBean</artifactId>
+      <version>1.0</version>
+      <scope>system</scope>
+      <systemPath>${productlibpath}/FileExportBean.jar</systemPath>
+    </dependency>
+
+    <!-- Download Util -->
+    <dependency>
+      <groupId>com.svm.lrp.nfr.jsf.exp</groupId>
+      <artifactId>downloadutil</artifactId>
+      <version>1.0</version>
+      <scope>system</scope>
+      <systemPath>${productlibpath}/downloadutil.jar</systemPath>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <finalName>onbCBean</finalName>
+    <plugins>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.1</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+          <compilerArguments>
+            <endorseddirs>${endorsed.dir}</endorseddirs>
+          </compilerArguments>
+        </configuration>
+      </plugin>
+
+      <!--Added by Mahendiran -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-help-plugin</artifactId>
+        <version>2.1.1</version>
+        <executions>
+          <execution>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>effective-pom</goal>
+            </goals>
+            <configuration>
+              <output>${project.build.outputDirectory}/META-INF/resources/${project.version}</output>
+
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+
+      <plugin>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>2.7</version>
+        <executions>
+          <execution>
+            <phase>validate</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.build.outputDirectory}/META-INF/resources</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>/src/main/webapp</directory>
+                  <filtering>false</filtering>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>2.3</version>
+        <configuration>
+          <failOnMissingWebXml>false</failOnMissingWebXml>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>2.6</version>
+        <executions>
+          <execution>
+            <phase>validate</phase>
+            <goals>
+              <goal>copy</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${endorsed.dir}</outputDirectory>
+              <silent>true</silent>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>javax</groupId>
+                  <artifactId>javaee-endorsed-api</artifactId>
+                  <version>7.0</version>
+                  <type>jar</type>
+                </artifactItem>
+              </artifactItems>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.zeroturnaround</groupId>
+        <artifactId>jrebel-maven-plugin</artifactId>
+        <version>1.1.10</version>
+        <executions>
+          <execution>
+            <id>generate-rebel-xml</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+    </plugins>
+  </build>
+</project>
