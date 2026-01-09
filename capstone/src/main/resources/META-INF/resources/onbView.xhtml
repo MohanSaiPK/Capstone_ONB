@@ -1,0 +1,168 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui" xmlns:lrp="http://solverminds.com/jsf/component"
+    xmlns:jsf="http://xmlns.jcp.org/jsf/passthrough" xmlns:svm="http://java.sun.com/jsf/composite/svm">
+    <style>
+
+    </style>
+
+    <h:form id="onbForm">
+       
+        <svm:ToolBar id="toolbar" objref="#{onbCBean.object}" update="-onbForm" updatesearch="onbForm" formid="-onbForm"
+            toolbar="#{onbCBean.toolbar}" />
+        <p:growl id="growl" showDetail="true" life="2000" />
+
+        <div class="header-container">
+            <div class="row1" style="display: flex; align-items: center;width: 100%; gap: 10px;margin-left: 20px;">
+
+                <!--CHANGES HERE-->
+                <div style="display: flex; flex-direction: column; width: 17.5%;">
+
+                    <label>
+                        Type of Inspection <span class="mandatory">*</span>
+                    </label>
+
+                <p:selectOneMenu value="#{onbCBean.model.dataModel.inspectionCode}" disabled="#{onbCBean.model.onbStateModel.inspectionCodeDisabled}">
+                    <f:selectItem itemLabel="-Select-" itemValue="" />
+                    <f:selectItems value="#{onbCBean.model.dataModel.inspectionTypeList}" var="it" itemLabel="#{it.inspectiontypename}"
+                        itemValue="#{it.inspectiontypecode}" />
+                </p:selectOneMenu>
+
+
+
+
+                </div>
+                <!--CHANGES HERE-->
+
+                <div style="width:20%; display: flex;flex-direction: column;">
+                    <label>Inspection Date <span class="mandatory">*</span></label>
+                    <p:calendar required="true" id="insDate" value="#{onbCBean.model.dataModel.dateOfInspection}" disabled="#{onbCBean.model.onbStateModel.dateOfInspectionDisabled}"
+                        readonlyInput="true" showOn="focus" pattern="dd/MM/yyyy" />
+                </div>
+                <div style="width:25%; display: flex;flex-direction: column;">
+                    <p:outputLabel for="lastInsDate" value="Last Inspection Date" />
+                    <p:calendar id="lastInsDate" value="#{onbCBean.model.dataModel.lastInspectionDate}" disabled="#{onbCBean.model.onbStateModel.lastInspectionDateDisabled}"
+                        readonlyInput="true" showOn="focus" pattern="dd/MM/yyyy"
+                        mindate="#{onbCBean.model.dataModel.currentDate}" navigator="true" />
+                </div>
+                <div style="margin-top:15px;text-align: center;display: flex;align-items: center;">
+                    <label class="switch">
+                        <h:selectBooleanCheckbox id="basicToggle" value="#{onbCBean.model.dataModel.value1}" disabled="#{onbCBean.model.onbStateModel.value1Disabled}">
+                            <f:ajax event="change" listener="#{onbCBean.ctrl.onBasicToggleChange}" execute="@this"
+                                render="@this" />
+                        </h:selectBooleanCheckbox>
+
+                        <span class="slider round"></span>
+                    </label>
+
+                    <h:outputLabel for="basicToggle" value="Remote" />
+                </div>
+            </div>
+            <div class="row2"
+                style="display: flex; align-items: end;margin-top:10px;width: 100%; gap: 10px;margin-left: 20px;justify-content:start;gap: 10px;">
+                <div style="width: 17.5%;">
+                    <label>Place of Inspection <span class="mandatory">*</span></label>
+                    <p:selectOneRadio required="true" id="line" value="#{onbCBean.model.dataModel.placeOfInspection}"
+                        layout="lineDirection" disabled="#{onbCBean.model.onbStateModel.placeOfInspectionDisabled}">
+                        <f:selectItem itemLabel="Port" itemValue="port" />
+                        <f:selectItem itemLabel="Sailing" itemValue="sailing" />
+                    </p:selectOneRadio>
+                </div>
+                <div style="
+                    display: flex;
+                    align-items: flex-end;
+                    width: 35%;
+                    gap: 6px;
+                ">
+
+                    <div style="display: flex; flex-direction: column; width: 45%;">
+                        <label>From Port <span class="mandatory">*</span></label>
+                        <h:inputText required="true" id="fromPortCode" value="#{onbCBean.model.dataModel.fromPortCode}"
+                            style="width: 100%;" disabled="#{onbCBean.model.onbStateModel.fromPortCodeDisabled}" />
+                    </div>
+                    <svm:TwoColSearch actionEventListener="#{onbCBean.ctrl.onFromPortSearch}" icon="fa fa-search"
+                        style="width: 10%;" update="FROM_PORT" />
+
+
+                    <h:inputText id="fromPortName" value="#{onbCBean.model.dataModel.fromPortName}" disabled="#{onbCBean.model.onbStateModel.fromPortNameDisabled}"
+                        style="width: 45%;" />
+
+                </div>
+
+                <div style="
+                    display: flex;
+                    align-items: flex-end;
+                    width: 35%;
+                    gap: 6px;
+                ">
+
+                    <div style="display: flex; flex-direction: column; width: 45%;">
+                        <label>To Port <span class="mandatory">*</span></label>
+                        <h:inputText required="true" id="toPortCode" value="#{onbCBean.model.dataModel.toPortCode}" disabled="#{onbCBean.model.onbStateModel.toPortCodeDisabled}"
+                            style="width: 100%;" />
+                    </div>
+
+                    <svm:TwoColSearch actionEventListener="#{onbCBean.ctrl.onToPortSearch}" icon="fa fa-search"
+                        style="width: 10%;" update="TO_PORT" />
+
+                    <h:inputText id="toPortName" value="#{onbCBean.model.dataModel.toPortName}" style="width: 45%;" disabled="#{onbCBean.model.onbStateModel.toPortNameDisabled}" />
+
+                </div>
+
+            </div>
+            <div class="row3"
+                style="display: flex; align-items: center;width: 100%; gap: 10px;margin-left: 20px;margin-top: 10px;margin-bottom: 30px;">
+                <div style="display: flex; flex-direction: column;width: 25%;">
+                    <label>Inspected/Audited By<span class="mandatory">*</span></label>
+                    <h:inputText required="true" id="inspector" value="#{onbCBean.model.dataModel.inspectorName}" disabled="#{onbCBean.model.onbStateModel.inspectorNameDisabled}"
+                        maxlength="10">
+                        <f:validateRegex pattern="^[A-Za-z ]+$" />
+                        <f:attribute name="label" value="Inspector Name" />
+                    </h:inputText>
+                </div>
+                <div style="display: flex;flex-direction: column;width: 50%;">
+                    <p:outputLabel for="comm" value="Comments(Description of the inspection)" />
+                    <p:inputTextarea id="comm" value="#{onbCBean.model.dataModel.comments}" rows="5" cols="30"
+                        counter="display" maxlength="500" counterTemplate="{0} characters remaining."
+                        autoResize="false" disabled="#{onbCBean.model.onbStateModel.commentsDisabled}" />
+                    <h:outputText id="display" class="block" />
+
+                </div>
+            </div>
+            <div style="
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-end;
+                width: 100%;
+                padding: 0px 21px 20px 10px;
+
+            ">
+                <!-- LEFT -->
+                <p:outputLabel value="Other Onboard Inspection Details" style="font-weight: bold; font-size: 16px;" />
+
+                <!-- RIGHT -->
+                <p:commandButton value="Add Inspection" process="@form" update="@form"
+                    action="#{onbCBean.ctrl.onAddInspection}" />
+                
+            </div>
+
+            <div>
+                <lrp:dataTable id="dtTbl" value="#{onbCBean.model.dataModel.tableData}" style="height:300px;"
+                    selection="#{onbCBean.model.dataModel.selectRow}"
+                    columnModel="#{onbCBean.model.dataModel.tableHeader}" selectionMode="single" editable="false"
+                    scrollHeight="300px" autoLayout="true">
+
+                    <p:ajax event="rowSelect" update="@form" />
+
+                    <p:ajax event="rowDblselect" listener="#{onbCBean.ctrl.onRowDoubleClick}" update="@form" />
+                </lrp:dataTable>
+            </div>
+
+        </div>
+    </h:form>
+
+</ui:composition>
